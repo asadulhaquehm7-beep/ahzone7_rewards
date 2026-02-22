@@ -2,25 +2,86 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Tap Game</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>AH ZONE 7 Tap Game</title>
     <style>
-        body { background: #1a1a1a; color: white; text-align: center; font-family: sans-serif; }
-        .coin { width: 200px; cursor: pointer; transition: transform 0.1s; margin-top: 50px; }
-        .coin:active { transform: scale(0.9); }
-        h1 { font-size: 48px; margin-bottom: 10px; }
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+            user-select: none;
+        }
+        .score-container {
+            font-size: 4rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #f3ba2f;
+            text-shadow: 0 0 20px rgba(243, 186, 47, 0.5);
+        }
+        .coin-wrapper {
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.1s ease;
+        }
+        .coin-wrapper:active {
+            transform: scale(0.95);
+        }
+        .coin-img {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            box-shadow: 0 0 50px rgba(243, 186, 47, 0.3);
+            border: 5px solid #f3ba2f;
+        }
+        .tap-effect {
+            position: absolute;
+            color: #f3ba2f;
+            font-size: 24px;
+            font-weight: bold;
+            pointer-events: none;
+            animation: floatUp 0.8s ease-out forwards;
+        }
+        @keyframes floatUp {
+            0% { opacity: 1; transform: translateY(0); }
+            100% { opacity: 0; transform: translateY(-100px); }
+        }
     </style>
 </head>
 <body>
-    <p>My Balance</p>
-    <h1 id="score">0</h1>
-    <img src="https://cryptologos.cc/logos/toncoin-ton-logo.png" class="coin" onclick="tap()">
+
+    <div class="score-container" id="score">0</div>
+    
+    <div class="coin-wrapper" id="coin" onclick="handleTap(event)">
+        <img src="https://cryptologos.cc/logos/toncoin-ton-logo.png" class="coin-img" alt="Coin">
+    </div>
 
     <script>
-        let balance = 0;
-        function tap() {
-            balance++;
-            document.getElementById('score').innerText = balance;
+        let score = parseInt(localStorage.getItem('user_score')) || 0;
+        document.getElementById('score').innerText = score.toLocaleString();
+
+        function handleTap(event) {
+            // পয়েন্ট বাড়ানো
+            score += 1;
+            document.getElementById('score').innerText = score.toLocaleString();
+            localStorage.setItem('user_score', score);
+
+            // ট্যাপ এনিমেশন তৈরি
+            const effect = document.createElement('div');
+            effect.innerText = '+1';
+            effect.className = 'tap-effect';
+            effect.style.left = event.clientX - 20 + 'px';
+            effect.style.top = event.clientY - 40 + 'px';
+            document.body.appendChild(effect);
+
+            // এনিমেশন শেষ হলে রিমুভ করা
+            setTimeout(() => effect.remove(), 800);
         }
     </script>
 </body>
