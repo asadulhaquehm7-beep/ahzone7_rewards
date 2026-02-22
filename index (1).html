@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Tap Game</title>
+    <style>
+        body { background: #1a1a1a; color: white; text-align: center; font-family: sans-serif; }
+        .coin { width: 200px; cursor: pointer; transition: transform 0.1s; margin-top: 50px; }
+        .coin:active { transform: scale(0.9); }
+        h1 { font-size: 48px; margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+    <p>My Balance</p>
+    <h1 id="score">0</h1>
+    <img src="https://cryptologos.cc/logos/toncoin-ton-logo.png" class="coin" onclick="tap()">
+
+    <script>
+        let balance = 0;
+        function tap() {
+            balance++;
+            document.getElementById('score').innerText = balance;
+        }
+    </script>
+</body>
+</html>
