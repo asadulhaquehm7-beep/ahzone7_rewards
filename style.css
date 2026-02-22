@@ -1,0 +1,94 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body */
+body {
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  font-family: Arial, Helvetica, sans-serif;
+  color: #ffffff;
+  text-align: center;
+  min-height: 100vh;
+  padding: 15px;
+}
+
+/* Header */
+h2 {
+  margin-bottom: 10px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+h3 {
+  margin-bottom: 20px;
+  color: #00ffcc;
+}
+
+/* Card Style */
+.card {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 15px;
+  margin: 12px 0;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Buttons */
+button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* Button Colors */
+button.mine {
+  background: #ffd700;
+  color: #000;
+}
+
+button.spin {
+  background: #ff5252;
+  color: #fff;
+}
+
+button.lucky {
+  background: #7c4dff;
+  color: #fff;
+}
+
+button.scratch {
+  background: #00e676;
+  color: #000;
+}
+
+button.daily {
+  background: #00bcd4;
+  color: #000;
+}
+
+button.withdraw {
+  background: #ff9800;
+  color: #000;
+}
+
+/* Hover Effect */
+button:hover {
+  opacity: 0.85;
+  transform: scale(1.02);
+}
+
+/* Footer Text */
+.footer {
+  margin-top: 25px;
+  font-size: 13px;
+  opacity: 0.8;
+}
